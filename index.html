@@ -27,8 +27,8 @@
         }
 
         function playRound(computerSelection,playerSelection) {
-            computerSelection = computerPlay();
-            playerSelection = playerPlay();
+            var computerSelection = computerPlay();
+            var playerSelection = playerPlay();
 
             if (playerSelection == computerSelection) {
                 return alert('It\'s a tie');
@@ -45,7 +45,13 @@
         }
 
         function game() {
-            
+            let computerScore = playerScore = ties = 0;
+            for (let round = 0; round < 5; round++) {
+
+
+            }
+
+
         }
 
         
