@@ -47,7 +47,11 @@
         function game() {
             let computerScore = playerScore = ties = 0;
             for (let round = 0; round < 5; round++) {
+                let computerRound = computerPlay();
+                let playerRound = playerPlay();
+                let winner = playRound(computerRound, playerRound);
 
+                
 
             }
 
