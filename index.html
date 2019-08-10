@@ -10,11 +10,38 @@
     <script>
         function computerPlay() {
             let choices = ['paper','scissors','rock'];
-            return choices[Math.floor(Math.random()*items.length)];  
+            return choices[Math.floor(Math.random()*choices.length)];  
             }
         
+        function playerPlay(input) {
+            input = prompt('Rock, paper, or scissors?').toLowerCase();
+
+            while(true) {
+                if(input == 'rock' || input == 'paper' || input == 'scissors') {
+                    break;
+                } else {
+                    input = prompt('Please enter one of the following: rock, paper, scissors').toLowerCase();
+                }
+            }
+            return input;
+        }
+
         function playRound(computerSelection,playerSelection) {
-            
+            computerSelection = computerPlay();
+            playerSelection = playerPlay();
+
+            if (playerSelection == computerSelection) {
+                return alert('It\'s a tie');
+            } else if (playerSelection == 'paper') {
+                return computerSelection == 'scissors' ? alert('You lose. Scissors beats paper') : alert('You win. Paper beats rock.');
+            } else if (playerSelection == 'scissors') {
+                return computerSelection == 'rock' ? alert('You lose. Rock beats scissors') : alert('You win. Scissors beats paper.');
+            } else if (playerSelection == 'rock') {
+                return computerSelection == 'paper' ? alert('You lose. Paper beats rock.') : alert('You win. Rock beats scissors');
+            } else {
+                alert('There was an error with the game.')
+            }
+
         }
 
         
