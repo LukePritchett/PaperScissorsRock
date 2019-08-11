@@ -43,7 +43,7 @@
                 return alert('It\'s a tie. \nPlayer Score: ' + playerScore + ' Computer Score: ' + computerScore);
             } else if (playerSelection == 'paper') {
                 computerSelection == 'scissors' ? computerScore++ : playerScore++;
-                if (computerScore++) {
+                if (computerSelection == 'scissors') {
                     return alert('You lose. Scissors beats paper. \nPlayer Score: ' + playerScore +
                         ' Computer Score: ' + computerScore);
                 } else {
@@ -53,7 +53,7 @@
 
             } else if (playerSelection == 'scissors') {
                 computerSelection == 'rock' ? computerScore++ : playerScore++;
-                if (computerScore++) {
+                if (computerSelection == 'rock') {
                     return alert('You lose. Rock beats scissors. \nPlayer Score: ' + playerScore +
                         ' Computer Score: ' + computerScore);
                 } else {
@@ -62,16 +62,32 @@
                 }
             } else if (playerSelection == 'rock') {
                 computerSelection == 'paper' ? computerScore++ : playerScore++;
-                if (computerScore++) {
+                if (computerSelection == 'paper') {
                     return alert('You lose. Paper beats rock. \nPlayer Score: ' + playerScore +
                         ' Computer Score: ' + computerScore);
                 } else {
                     return alert('You win. Rock beats scissors. \nPlayer Score: ' + playerScore + ' Computer Score: ' +
-                        computerScore);}
+                        computerScore);
+                        }
             } else {
                 alert('There was an error with the game.')
             }
+        }
 
+        function game() {
+            for (round = 0; round < 5; round++) {
+                playRound();
+            }
+            if (playerScore > computerScore) {
+                alert('You\'re the winner! We\'re proud of you. Beautiful!');
+            } else if (playerScore < computerScore) {
+                alert('You lose. Sad!');
+            } else {
+                alert('It\'s a tie');
+            }
+            playerScore = 0;
+            computerScore = 0;
+            ties = 0;
         }
     </script>
 </body>
