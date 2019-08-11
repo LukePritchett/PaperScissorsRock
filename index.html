@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         let playerScore = 0;
@@ -14,15 +16,15 @@
 
 
         function computerPlay() {
-            let choices = ['paper','scissors','rock'];
-            return choices[Math.floor(Math.random()*choices.length)];  
-            }
-        
+            let choices = ['paper', 'scissors', 'rock'];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
         function playerPlay(input) {
             input = prompt('Rock, paper, or scissors?').toLowerCase();
 
-            while(true) {
-                if(input == 'rock' || input == 'paper' || input == 'scissors') {
+            while (true) {
+                if (input == 'rock' || input == 'paper' || input == 'scissors') {
                     break;
                 } else {
                     input = prompt('Please enter one of the following: rock, paper, scissors').toLowerCase();
@@ -32,30 +34,46 @@
         }
 
 
-        function playRound(computerSelection,playerSelection) {
+        function playRound(computerSelection, playerSelection) {
             var computerSelection = computerPlay();
             var playerSelection = playerPlay();
 
             if (playerSelection == computerSelection) {
                 ties++;
-                return alert('It\'s a tie');
+                return alert('It\'s a tie. \nPlayer Score: ' + playerScore + ' Computer Score: ' + computerScore);
             } else if (playerSelection == 'paper') {
                 computerSelection == 'scissors' ? computerScore++ : playerScore++;
-                return alert('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+                if (computerScore++) {
+                    return alert('You lose. Scissors beats paper. \nPlayer Score: ' + playerScore +
+                        ' Computer Score: ' + computerScore);
+                } else {
+                    return alert('You win. Paper beats rock. \nPlayer Score: ' + playerScore + ' Computer Score: ' +
+                        computerScore);
+                }
+
             } else if (playerSelection == 'scissors') {
                 computerSelection == 'rock' ? computerScore++ : playerScore++;
-                return alert('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+                if (computerScore++) {
+                    return alert('You lose. Rock beats scissors. \nPlayer Score: ' + playerScore +
+                        ' Computer Score: ' + computerScore);
+                } else {
+                    return alert('You win. Scissors beats paper. \nPlayer Score: ' + playerScore + ' Computer Score: ' +
+                        computerScore);
+                }
             } else if (playerSelection == 'rock') {
                 computerSelection == 'paper' ? computerScore++ : playerScore++;
-                return alert('Player Score: ' + playerScore + ' Computer Score: ' + computerScore + ' Ties: ' + ties);
+                if (computerScore++) {
+                    return alert('You lose. Paper beats rock. \nPlayer Score: ' + playerScore +
+                        ' Computer Score: ' + computerScore);
+                } else {
+                    return alert('You win. Rock beats scissors. \nPlayer Score: ' + playerScore + ' Computer Score: ' +
+                        computerScore);}
             } else {
                 alert('There was an error with the game.')
             }
 
         }
-        
-
-        
     </script>
 </body>
+
 </html>
