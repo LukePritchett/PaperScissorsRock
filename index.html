@@ -8,6 +8,11 @@
 </head>
 <body>
     <script>
+        let playerScore = 0;
+        let computerScore = 0;
+        let ties = 0;
+
+
         function computerPlay() {
             let choices = ['paper','scissors','rock'];
             return choices[Math.floor(Math.random()*choices.length)];  
@@ -26,37 +31,29 @@
             return input;
         }
 
+
         function playRound(computerSelection,playerSelection) {
             var computerSelection = computerPlay();
             var playerSelection = playerPlay();
 
             if (playerSelection == computerSelection) {
+                ties++;
                 return alert('It\'s a tie');
             } else if (playerSelection == 'paper') {
-                return computerSelection == 'scissors' ? alert('You lose. Scissors beats paper') : alert('You win. Paper beats rock.');
+                computerSelection == 'scissors' ? computerScore++ : playerScore++;
+                return alert('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
             } else if (playerSelection == 'scissors') {
-                return computerSelection == 'rock' ? alert('You lose. Rock beats scissors') : alert('You win. Scissors beats paper.');
+                computerSelection == 'rock' ? computerScore++ : playerScore++;
+                return alert('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
             } else if (playerSelection == 'rock') {
-                return computerSelection == 'paper' ? alert('You lose. Paper beats rock.') : alert('You win. Rock beats scissors');
+                computerSelection == 'paper' ? computerScore++ : playerScore++;
+                return alert('Player Score: ' + playerScore + ' Computer Score: ' + computerScore + ' Ties: ' + ties);
             } else {
                 alert('There was an error with the game.')
             }
 
         }
-
-        function game() {
-            let computerScore = playerScore = ties = 0;
-            for (let round = 0; round < 5; round++) {
-                let computerRound = computerPlay();
-                let playerRound = playerPlay();
-                let winner = playRound(computerRound, playerRound);
-
-                
-
-            }
-
-
-        }
+        
 
         
     </script>
